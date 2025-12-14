@@ -42,7 +42,7 @@ df["Date"] = df["Start_Time"].dt.date
 df = df.dropna()
 
 # ===============================
-# 3. 날씨 카테고리 생성 (핵심)
+# 3. 날씨 카테고리 생성 
 # ===============================
 def weather_category(cond):
     cond = str(cond).lower()
@@ -63,7 +63,7 @@ df["Weather_Category"] = df["Weather_Condition"].apply(weather_category)
 # 4. 하루 단위 데이터 생성
 # ===============================
 daily = df.groupby(["Date", "Weather_Category"]).agg({
-    "Severity": "count",              # 하루 사고 건수
+    "Severity": "count",            
     "Temperature(F)": "mean",
     "Humidity(%)": "mean",
     "Visibility(mi)": "mean",
@@ -84,7 +84,7 @@ summary_table = daily.groupby("Weather_Category").agg({
     "Precipitation(in)": "mean"
 })
 
-# 보기 좋게 소수점 2자리
+
 summary_table = summary_table.round(2)
 summary_table.to_csv(f"{RESULT_DIR}/summary_by_weather.csv")
 
@@ -100,8 +100,8 @@ plt.figure(figsize=(8,5))
 daily[daily["Weather_Category"] == "Clear"]["Accident_Count"].plot(
     kind="hist",
     bins=30,
-    alpha=0.9,                 # 가장 진하게
-    color="black",             # 대비 최강
+    alpha=0.9,                 
+    color="black",             
     edgecolor="black",
     label="Clear"
 )
@@ -137,7 +137,7 @@ plt.close()
 
 
 # ===============================
-# 6. 그래프 ③ 모든 날씨 유형 boxplot (가산점용 핵심)
+# 6. 그래프 ③ 모든 날씨 유형 boxplot 
 # ===============================
 box_df = daily.pivot(
     columns="Weather_Category",
@@ -241,8 +241,7 @@ daily = df.groupby("Date").agg({
 daily.rename(columns={"Severity": "Accident_Count"}, inplace=True)
 
 # ===============================
-# 5. 🔥 타깃 재정의 (핵심 수정)
-# 사고가 '많이 난 날' = 위험한 날
+# 5.사고가 '많이 난 날' = 위험한 날
 # ===============================
 threshold = daily["Accident_Count"].median()
 
