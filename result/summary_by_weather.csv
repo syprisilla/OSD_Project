@@ -1,0 +1,6 @@
+Weather_Category,Accident_Count,Temperature(F),Humidity(%),Visibility(mi),Precipitation(in)
+Clear,2.84,69.24,66.71,9.88,0.16
+Fog,2.4,56.27,83.33,3.27,0.02
+Other,35.46,64.84,70.26,9.04,0.02
+Rain,44.93,63.53,84.18,6.76,0.06
+Snow,23.23,27.37,82.98,3.78,0.01
