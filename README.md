@@ -28,3 +28,15 @@
 - **Matplotlib / Seaborn** : 데이터 시각화
 - **Scikit-learn** : 데이터 분할 및 사고 위험도 예측 모델
 - **Git / GitHub** : 형상 관리 및 오픈소스 프로젝트 관리
+
+---
+
+## 실행 방법
+
+1. Kaggle에서 데이터 다운로드
+2. `data/` 폴더에 CSV 파일 저장
+3. 아래 명령 실행
+
+```bash
+python analysis.py
+```
